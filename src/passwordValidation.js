@@ -12,8 +12,6 @@ export default function isValidPassword(password = "") {
     if (item === password) return false
   }
 
-  let arr = password.split('');
-
   let ascending = '0123456789';
   let descending = '9876543210';
 
@@ -22,31 +20,10 @@ export default function isValidPassword(password = "") {
     if (ascending.includes(substring) || descending.includes(substring)) return false;
 }
 
-  // // Ascending
-  // for (let i = 1; i < arr.length-1; i++){
-  //   if((typeof Number((arr[i]) === 'number') && Number(arr[i]) + 1 === Number(arr[i+1])) || (Number(arr[i])-1 === Number(arr[i-1]) )) return false
-  // }
-
-  // // Descending
-  // for (let j = 1; j < arr.length; j++){
-  //   if(Number(arr[j])-1 === Number(arr[j-1])) return false
-  // }
-
-
   if (typeof password !== "string") password = String(password);
   let reg1 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])[a-zA-Z\d]{10}$/;
   if (!reg1.test(password)) return false
 
-  // * * * YOUR CODE GOES IN HERE ... * * *
-  /*
-   * if (password is not exactly 10 digits or characters...) {
-   *   return ...;
-   * }
-   *
-   * if (is not composed by digits and numbers) {
-   *   return ...;
-   * }
-   */
   const setOfPassword = new Set([...password]);
   if (setOfPassword.size < 4) return false;
   return true;
